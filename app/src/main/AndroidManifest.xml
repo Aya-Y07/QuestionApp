@@ -10,6 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuestionApp">
         <activity
+            android:name=".Result"
+            android:exported="false" />
+        <activity
+            android:name=".graph_page"
+            android:exported="false" />
+        <activity
+            android:name=".Subject_physics"
+            android:exported="false" />
+        <activity
+            android:name=".Subject_math"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".QuizzActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
