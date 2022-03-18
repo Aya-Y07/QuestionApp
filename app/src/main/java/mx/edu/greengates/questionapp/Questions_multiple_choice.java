@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -60,6 +61,28 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
     private Timer timer;
     LocalTime time;
 
+    ImageView imageView;
+
+    int imageNum;
+    int [] appImages = {
+            R.drawable.topic_1_1,
+            R.drawable.topic_1_2,
+            R.drawable.topic_1_3,
+            R.drawable.topic_1_4,
+            R.drawable.topic_2_1,
+            R.drawable.topic_2_2,
+            R.drawable.topic_2_3,
+            R.drawable.topic_2_4,
+            R.drawable.topic_3_1,
+            R.drawable.topic_3_2,
+            R.drawable.topic_3_3,
+            R.drawable.topic_3_4,
+            R.drawable.topic_4_1,
+            R.drawable.topic_4_2,
+            R.drawable.topic_4_3,
+            R.drawable.topic_4_4,
+    };
+
     ArrayList<Question>TempQuestionList = new ArrayList<>();
 
     @Override
@@ -79,6 +102,8 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         radioAnswer2 = (RadioButton) findViewById(R.id.ans_b);
         radioAnswer3 = (RadioButton) findViewById(R.id.ans_c);
         radioAnswer4 = (RadioButton) findViewById(R.id.ans_d);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        imageNum = 1;
 
         quiz = Question_folder.getQuestionsFromCSV(this);
         quizNum = 1;
@@ -251,7 +276,6 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
                 // Cancel
                 timer.cancel();
                 timer = null;
-                Time time = ()
             }
 
         }

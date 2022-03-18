@@ -10,5 +10,6 @@ public class Record_data extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_data);
+
     }
 }

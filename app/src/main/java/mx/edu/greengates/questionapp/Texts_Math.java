@@ -13,14 +13,12 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
     private Button dif;
     private Button vec;
     private Button comp;
-    private Button prob;
-
 
     private Button ans_trig;
     private Button ans_dif;
     private Button ans_vec;
     private Button ans_comp;
-    private Button ans_prob;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +37,6 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
         comp = (Button) findViewById(R.id.questions_complex_numebr);
         comp.setOnClickListener((View.OnClickListener)this);
 
-        prob = (Button) findViewById(R.id.questions_probability);
-        prob.setOnClickListener((View.OnClickListener)this);
-
-
         ans_trig = (Button) findViewById(R.id.solutions_trignometry);
         ans_trig.setOnClickListener((View.OnClickListener)this);
 
@@ -54,9 +48,6 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
 
         ans_comp = (Button) findViewById(R.id.solutions_complex_numebr);
         ans_comp.setOnClickListener((View.OnClickListener)this);
-
-        ans_prob = (Button) findViewById(R.id.solutions_probability);
-        ans_prob.setOnClickListener((View.OnClickListener)this);
 
     }
     public void onClick (View v){
@@ -114,12 +105,6 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
         if(v == ans_comp){
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "comp";
-            myIntent.putExtra("Solution", quiz);
-            startActivity(myIntent);
-        }
-        if(v == ans_prob){
-            Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
-            quiz = "prob";
             myIntent.putExtra("Solution", quiz);
             startActivity(myIntent);
         }

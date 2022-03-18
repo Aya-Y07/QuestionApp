@@ -41,8 +41,10 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    public void
 
-    public void onClick(View v){
+
+    public void onClick(View v) {
 
 
 
@@ -54,7 +56,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             String EmailAddress = profile_email_address.getText().toString();
             String PhoneNumber = profile_username.getText().toString();
 
-            //そのデータを移したいページに移行させる
 
             Intent myIntent = new Intent(Profile.this, Record_data.class);
             myIntent.putExtra("username", username);
