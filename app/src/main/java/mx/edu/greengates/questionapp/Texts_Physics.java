@@ -53,25 +53,25 @@ public class Texts_Physics extends AppCompatActivity implements View.OnClickList
         String quiz = "";
         if(v == topic_1){
             Intent myIntent = new Intent(Texts_Physics.this, Questions_multiple_choice.class);
-            quiz = "topic 1";
+            quiz = "Topic_1_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }
         if(v == topic_2){
             Intent myIntent = new Intent(Texts_Physics.this, Questions_multiple_choice.class);
-            quiz = "topic 2";
+            quiz = "Topic_2_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }
         if(v == topic_3){
             Intent myIntent = new Intent(Texts_Physics.this, Questions_multiple_choice.class);
-            quiz = "topic 3";
+            quiz = "Topic_3_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }
         if(v == topic_4){
             Intent myIntent = new Intent(Texts_Physics.this, Questions_multiple_choice.class);
-            quiz = "topic 4";
+            quiz = "Topic_4_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }

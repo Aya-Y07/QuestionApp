@@ -8,7 +8,6 @@ import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -127,26 +127,8 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         btnEndQuiz.setOnClickListener(this);
         btnEndQuiz.setEnabled(false);
 
-
-//update question display
-        String line ="";
-        int i = 0;
-        BufferedReader reader = null;
-        try{
-            while((line = reader.readLine()) !=null){
-                TempQuestion = quiz.getQuestion(i);
-                if (TempQuestion.getId() == topic){
-                    TempQuestionList.add(TempQuestion);
-
-                    i += 1;
-                }else{
-                    i += 1;
-                }
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        showQuestionOnDisplay();
+        ArrayList<String> currQuestion = new ArrayList<>();
+        
 
     }
 
@@ -174,11 +156,12 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
                 });
             }
         }, 0, period);
-    }
+    }//timer
 
     public void showQuestionOnDisplay() {
         questionNumber.setText(getString(R.string.question_count,quizNum));
         rightAnswer = TempQuestion.getAnswer();
+
         String[] options = TempQuestion.getOptions();
         Collections.shuffle(Arrays.asList(options));
         radioAnswer1.setText(options[0]);
@@ -189,6 +172,10 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         radioAnswer3.setChecked(false);
         radioAnswer4.setText(options[3]);
         radioAnswer4.setChecked(false);
+
+        Random random = new Random();
+        int randoNum = random.nextInt(quizArray.size());
+
 
     }
 

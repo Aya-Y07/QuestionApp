@@ -1,4 +1,4 @@
-ID,Question,Answer,A0,A1,A2,A3,SubjectID
+ID,Answer,A0,A1,A2,A3,SubjectID
 topic_1_1,A,A,B,C,D,P
 topic_1_2,A,A,B,C,D,P
 topic_1_3,A,A,B,C,D,P
@@ -15,3 +15,21 @@ topic_4_1,A,A,B,C,D,P
 topic_4_2,A,A,B,C,D,P
 topic_4_3,A,A,B,C,D,P
 topic_4_4,A,A,B,C,D,P
+
+
+tirg_1,
+trig_2,
+tirg_3,
+trig_4,
+dif_1,
+dif_1,
+dif_1,
+dif_1,
+vec_1,
+vec_2,
+vec_3,
+vec_4,
+comp_1,
+comp_2,
+comp_3,
+comp_4,
