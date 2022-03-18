@@ -64,19 +64,27 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
     ImageView imageView;
 
     int imageNum;
-    int [] appImages = {
+    int [] Topic_1_Images = {
             R.drawable.topic_1_1,
             R.drawable.topic_1_2,
             R.drawable.topic_1_3,
             R.drawable.topic_1_4,
+    };
+    int [] Topic_2_Images = {
             R.drawable.topic_2_1,
             R.drawable.topic_2_2,
             R.drawable.topic_2_3,
             R.drawable.topic_2_4,
+    };
+
+    int [] Topic_3_Images = {
             R.drawable.topic_3_1,
             R.drawable.topic_3_2,
             R.drawable.topic_3_3,
             R.drawable.topic_3_4,
+    };
+
+    int [] Topic_4_Images = {
             R.drawable.topic_4_1,
             R.drawable.topic_4_2,
             R.drawable.topic_4_3,
@@ -96,7 +104,6 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
 
 
         questionNumber = (TextView) findViewById(R.id.questionNum);
-        questionText = (TextView) findViewById(R.id.questionText);
         rgAnswers = (RadioGroup) findViewById(R.id.radioGroup);
         radioAnswer1 = (RadioButton) findViewById(R.id.ans_a);
         radioAnswer2 = (RadioButton) findViewById(R.id.ans_b);
@@ -171,7 +178,6 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
 
     public void showQuestionOnDisplay() {
         questionNumber.setText(getString(R.string.question_count,quizNum));
-        questionText.setText(TempQuestion.getQuestion());
         rightAnswer = TempQuestion.getAnswer();
         String[] options = TempQuestion.getOptions();
         Collections.shuffle(Arrays.asList(options));
@@ -204,12 +210,11 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
     }
     private Questions getQuestionsFromCSV(){
         int ID = 0;
-        int QUESTION = 1;
-        int A0 = 2;
-        int A1 = 3;
-        int A2 = 4;
-        int A3 = 5;
-        int SUBJECT = 6;
+        int A0 = 1;
+        int A1 = 2;
+        int A2 = 3;
+        int A3 = 4;
+        int SUBJECT = 5;
 
         ArrayList<Question> questions = new ArrayList<>();
         Questions questionsFromFile = new Questions(questions);

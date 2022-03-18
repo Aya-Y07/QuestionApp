@@ -76,12 +76,6 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }
-        if(v == prob){
-            Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
-            quiz = "prob";
-            myIntent.putExtra("Quiz", quiz);
-            startActivity(myIntent);
-        }
 
 
         if(v == ans_trig){
