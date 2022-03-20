@@ -10,7 +10,7 @@ import android.widget.Button;
 public class Texts_Math extends AppCompatActivity implements View.OnClickListener {
 
     private Button trig;
-    private Button dif;
+    private Button alg;
     private Button vec;
     private Button comp;
 
@@ -28,8 +28,8 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
         trig = (Button) findViewById(R.id.question_trignometry);
         trig.setOnClickListener((View.OnClickListener)this);
 
-        dif = (Button) findViewById(R.id.questions_differenciation);
-        dif.setOnClickListener((View.OnClickListener)this);
+        alg = (Button) findViewById(R.id.questions_algebra);
+        alg.setOnClickListener((View.OnClickListener)this);
 
         vec = (Button) findViewById(R.id.questions_vector);
         vec.setOnClickListener((View.OnClickListener)this);
@@ -40,7 +40,7 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
         ans_trig = (Button) findViewById(R.id.solutions_trignometry);
         ans_trig.setOnClickListener((View.OnClickListener)this);
 
-        ans_dif = (Button) findViewById(R.id.solutions_differenciation);
+        ans_dif = (Button) findViewById(R.id.solutions_algebra);
         ans_dif.setOnClickListener((View.OnClickListener)this);
 
         ans_vec = (Button) findViewById(R.id.solutions_vector);
@@ -58,9 +58,9 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }
-        if(v == dif){
+        if(v == alg){
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
-            quiz = "dif";
+            quiz = "alg";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
         }

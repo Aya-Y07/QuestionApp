@@ -1,26 +1,26 @@
 ID,Answer,A0,A1,A2,A3,SubjectID
-topic_1_1,A,A,B,C,D,P
-topic_1_2,A,A,B,C,D,P
-topic_1_3,A,A,B,C,D,P
-topic_1_4,A,A,B,C,D,P
-topic_2_1,A,A,B,C,D,P
-topic_2_2,A,A,B,C,D,P
-topic_2_3,A,A,B,C,D,P
+topic_1_1,5%,0.2%,2.5%,5%,10%,P
+topic_1_2,c,A,B,C,D,P
+topic_1_3,Coulomb,Mole,Keilvin,Coulomb,Ampere,P
+topic_1_4,15%,5%,15%,25%,30%,P
+topic_2_1,C,A,B,C,D,P
+topic_2_2,B,A,B,C,D,P
+topic_2_3,B,A,B,C,D,P
 topic_2_4,A,A,B,C,D,P
-topic_3_1,A,A,B,C,D,P
-topic_3_2,A,A,B,C,D,P
-topic_3_3,A,A,B,C,D,P
-topic_3_4,A,A,B,C,D,P
-topic_4_1,A,A,B,C,D,P
-topic_4_2,A,A,B,C,D,P
-topic_4_3,A,A,B,C,D,P
-topic_4_4,A,A,B,C,D,P
+topic_3_1,30MPa,10MPa,15MPa,30MPa,40MPa,M
+topic_3_2,B,A,B,C,D,P
+topic_3_3,400s,250s,400s,2500s,4000s,P
+topic_3_4,120/m,60/m,120/m,180/m,240/m,P
+topic_4_1,D,A,B,C,D,P
+topic_4_2,B,A,B,C,D,P
+topic_4_3,D,A,B,C,D,P
+topic_4_4,C,A,B,C,D,P
 
 
-tirg_1,
-trig_2,
-tirg_3,
-trig_4,
+tirg_1,5,3,4,5,7,M
+trig_2,Δ,s^2,ab+bc+ca,Δ,noe of these,M
+tirg_3,nπ/2 + π/8,nπ + π/4,nπ/2 + π/8,nπ/2 + π/8,none of these,M
+trig_4,nπ ± π/6,2nπ ± π/6,nπ ± π/6,2nπ ± π/3,nπ ± π/3,M
 dif_1,
 dif_1,
 dif_1,

@@ -30,7 +30,7 @@
         android:layout_marginTop="135dp"
         android:layout_marginEnd="74dp"
         android:layout_marginBottom="548dp"
-        android:text="Solutions"
+        android:text="@string/solutions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/question_trignometry"
@@ -38,7 +38,7 @@
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
-        android:id="@+id/questions_differenciation"
+        android:id="@+id/questions_algebra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -52,17 +52,17 @@
         app:layout_constraintTop_toBottomOf="@+id/question_trignometry" />
 
     <Button
-        android:id="@+id/solutions_differenciation"
+        android:id="@+id/solutions_algebra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="74dp"
         android:layout_marginBottom="495dp"
-        android:text="Solutions"
+        android:text="@string/solutions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/questions_differenciation"
+        app:layout_constraintStart_toEndOf="@+id/questions_algebra"
         app:layout_constraintTop_toBottomOf="@+id/solutions_trignometry" />
 
     <Button
@@ -77,7 +77,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questions_differenciation" />
+        app:layout_constraintTop_toBottomOf="@+id/questions_algebra" />
 
     <Button
         android:id="@+id/solutions_vector"
@@ -91,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/questions_vector"
-        app:layout_constraintTop_toBottomOf="@+id/solutions_differenciation" />
+        app:layout_constraintTop_toBottomOf="@+id/solutions_algebra" />
 
     <Button
         android:id="@+id/questions_complex_numebr"
@@ -136,16 +136,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_differenciation"
+        android:id="@+id/text_akgebra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="509dp"
-        android:text="@string/text_dif"
+        android:text="@string/text_alg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/questions_differenciation"
+        app:layout_constraintEnd_toStartOf="@+id/questions_algebra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_trignometry" />
 
@@ -161,7 +161,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/questions_vector"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_differenciation" />
+        app:layout_constraintTop_toBottomOf="@+id/text_akgebra" />
 
     <TextView
         android:id="@+id/text_complex_number"
