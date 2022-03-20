@@ -21,15 +21,15 @@ tirg_1,5,3,4,5,7,M
 trig_2,Δ,s^2,ab+bc+ca,Δ,noe of these,M
 tirg_3,nπ/2 + π/8,nπ + π/4,nπ/2 + π/8,nπ/2 + π/8,none of these,M
 trig_4,nπ ± π/6,2nπ ± π/6,nπ ± π/6,2nπ ± π/3,nπ ± π/3,M
-dif_1,
-dif_1,
-dif_1,
-dif_1,
-vec_1,
-vec_2,
-vec_3,
-vec_4,
-comp_1,
-comp_2,
-comp_3,
-comp_4,
+alg_1,A,A,B,C,D,M
+alg_2,A,A,B,C,D,M
+alg_3,A,A,B,C,D,M
+alg_4,A,A,B,C,D,M
+vec_1,A,A,B,C,D,M
+vec_2,A,A,B,C,D,M
+vec_3,A,A,B,C,D,M
+vec_4,A,A,B,C,D,M
+comp_1,A,A,B,C,D,M
+comp_2,A,A,B,C,D,M
+comp_3,A,A,B,C,D,M
+comp_4,A,A,B,C,D,M
