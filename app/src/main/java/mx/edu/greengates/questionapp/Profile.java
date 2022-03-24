@@ -2,8 +2,10 @@ package mx.edu.greengates.questionapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.res.AssetManager;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,19 +26,16 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         private EditText profile_email_address;
         private EditText profile_phone_number;
         private Button submitBtn;
-        private Users user_info;
 
 
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
-        user_info = User_folder.getUsersFromCSV(this);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_profile);
 
 
-            submitBtn = (Button)  findViewById(R.id.btn_profile_submit);
+            submitBtn = (Button) findViewById(R.id.btn_profile_submit);
             profile_username = (EditText) findViewById(R.id.profile_username);
             profile_password = (EditText) findViewById(R.id.profile_password);
             profile_surname = (EditText) findViewById(R.id.profile_surname);
@@ -45,17 +44,47 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             profile_phone_number = (EditText) findViewById(R.id.prodfile_phone_number);
 
             submitBtn.setOnClickListener(this);
+        }
 
-            submitBtn.setOnClickListener(view -> {
-                String username = profile_username.getText().toString();
-                String firstname = profile_first_name.getText().toString();
-                String surname = profile_surname.getText().toString();
-                String password = profile_password.getText().toString();
-                String email = profile_email_address.getText().toString();
-                String phoneNumber = profile_phone_number.getText().toString();
+    @Override
+    public void onClick(View view) {
 
-            });
+        String username = profile_username.getText().toString();
+        String firstname = profile_first_name.getText().toString();
+        String surname = profile_surname.getText().toString();
+        String password = profile_password.getText().toString();
+        String email = profile_email_address.getText().toString();
+        String phoneNumber = profile_phone_number.getText().toString();
 
+        saveIntoCSV(username,firstname,surname,password,email,phoneNumber);
+
+
+    }
+
+
+    private void saveIntoCSV(String username, String firstname, String surname, String password, String email, String phoneNumber) {
+            try{
+                FileWriter file = new FileWriter("users.csv",false);
+                PrintWriter writer = new PrintWriter(new BufferedWriter(file));
+
+                writer.print(username);
+                writer.print(",");
+                writer.print(password);
+                writer.print(",");
+                writer.print(email);
+                writer.print(",");
+                writer.print(surname);
+                writer.print(",");
+                writer.print(firstname);
+                writer.print(",");
+                writer.print(phoneNumber);
+                writer.print(",");
+
+                writer.close();
+
+            }catch(IOException e){
+                e.printStackTrace();
+            }
     }
 
 

@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Timer;
@@ -61,6 +62,9 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
     private String rightAnswer;
     private Timer timer;
     LocalTime time;
+
+    Questions questions;
+    Map
 
     ImageView imageView;
 
