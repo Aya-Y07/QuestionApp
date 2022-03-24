@@ -91,6 +91,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
             R.drawable.topic_4_4,
     };
 
+
     ArrayList<Question>TempQuestionList = new ArrayList<>();
 
     @Override
@@ -128,7 +129,10 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         btnEndQuiz.setEnabled(false);
 
         ArrayList<String> currQuestion = new ArrayList<>();
-        
+
+        final MyFile myFile = (MyFile) getApp;getApplicationContext();
+        fileMyFile(myFile);
+
 
     }
 
@@ -173,8 +177,6 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         radioAnswer4.setText(options[3]);
         radioAnswer4.setChecked(false);
 
-        Random random = new Random();
-        int randoNum = random.nextInt(quizArray.size());
 
 
     }
@@ -243,6 +245,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
 
         return questionsFromFile;
     }
+
     public void onClick(View v)
     {
         if (v == btnNext)

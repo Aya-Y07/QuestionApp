@@ -1,5 +1,0 @@
-ID,solution
-trig_0,consA = 0 → 36+64-a^2 = 0 → a = 10 → R = a/2sinA = 5
-trig_2,sinA/a = sinB/b = sinC/ = 1/2R → sinA = a/2R. therefore 2R^2sinAsinBsinC = 2R^2(a/2R)・(b/2R)・(c/2R) = abc/4R = Δ
-trig_3,on simplication, it reduces to cos2θ = sin2θ → tan2θ = tanπ/4 → 2θ = nπ + π/4 → θ = nπ/2 + π/8
-tig_4,cos^2θ = 3/4 = cos^2(π/6) → θ = nπ ± π/6
