@@ -81,7 +81,8 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/topic_1_1" />
+            app:srcCompat="@drawable/topic_1_1"
+            android:contentDescription="TODO" />
 
     </RadioGroup>
 
@@ -145,12 +146,14 @@
         android:layout_height="161dp"
         android:layout_marginStart="68dp"
         android:layout_marginEnd="70dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338"
-        app:srcCompat="@drawable/topic_1_1" />
+        app:srcCompat="@drawable/topic_1_1"
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
