@@ -203,7 +203,8 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         int A1 = 2;
         int A2 = 3;
         int A3 = 4;
-        int SUBJECT = 5;
+        int SOLUTION = 5;
+        int SUBJECT = 6;
 
         ArrayList<Question> questions = new ArrayList<>();
         Questions questionsFromFile = new Questions(questions);
@@ -231,9 +232,10 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
                     String a1 = st.nextToken();
                     String a2 = st.nextToken();
                     String a3 = st.nextToken();
+                    String solution = st.nextToken();
                     String subject = st.nextToken();
 
-                    Question quizObj = new Question( id, question, answer, a0,a1, a2, a3, subject);
+                    Question quizObj = new Question( id, question, answer, a0,a1, a2, a3, solution,subject);
 
                     questionsFromFile.addQuestion(quizObj);
                 }

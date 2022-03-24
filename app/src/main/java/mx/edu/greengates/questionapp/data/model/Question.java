@@ -14,9 +14,10 @@ public class Question {
     private String A1;
     private String A2;
     private String A3;
+    private String solution;
     private String SUBJECT;
 
-    public Question(String id, String question, String answer, String A0, String A1, String A2, String A3,String SUBJECT){
+    public Question(String id, String question, String answer, String A0, String A1, String A2, String A3,String Solution,String SUBJECT){
 
         this.id = id;
         this.question = question;
@@ -25,11 +26,13 @@ public class Question {
         this.A1 = A1;
         this.A2 = A2;
         this.A3 = A3;
+        this.solution = solution;
         this.SUBJECT = SUBJECT;
     }
     public String getId(){return id;}
     public String getQuestion(){ return question;}
     public String getAnswer(){return answer;}
+    public String getSolution(){return solution;}
     public String getSUBJECT(){return SUBJECT;}
     public String[]getOptions(){
         String[] options = new String[4];
@@ -49,6 +52,6 @@ public class Question {
     }
     @Override
     public String toString(){
-        return "Question{" + "id ='" + id + '\'' + ", question = '" + question + '\'' + ", answer = '" + answer + '\'' + ", subject= '" + SUBJECT + '\'' + '}';
+        return "Question{" + "id ='" + id + '\'' + ", question = '" + question + '\'' + ", answer = '" + answer + '\'' + ", solution = '" + solution + '\'' + "subject = '" + SUBJECT + '\'' + '}';
     }
 }

@@ -21,7 +21,8 @@ public class Question_folder {
     public final int A1 = 4;
     public final int A2 = 5;
     public final int A3 = 6;
-    public final int SUBJECT = 7;
+    public final int SOLUTION = 7;
+    public final int SUBJECT = 8;
     Context context;
 
     public String filename;
@@ -86,6 +87,7 @@ public class Question_folder {
                     String A1 = st.nextToken();
                     String A2 = st.nextToken();
                     String A3 = st.nextToken();
+                    String SOLUTION = st.nextToken();
                     String SUBJECT = st.nextToken();
 
 
@@ -110,8 +112,9 @@ public class Question_folder {
                 String a1 = row[A1];
                 String a2 = row[A2];
                 String a3 = row[A3];
+                String solution = row[SOLUTION];
                 String subject = row[SUBJECT];
-                Question questionObj = new Question(id,question,answer,a0,a1,a2,a3,subject);
+                Question questionObj = new Question(id,question,answer,a0,a1,a2,a3,solution,subject);
                 questionList.add(questionObj);
             }
             rowNum++;
