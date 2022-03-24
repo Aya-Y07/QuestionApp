@@ -79,8 +79,8 @@ public class User_folder {
                 if(numLine > 0){
                     st = new StringTokenizer(line,",");
 
-                    String USERNAME = st.nextToken();
                     String USER_ID = st.nextToken();
+                    String USERNAME = st.nextToken();
                     String PASSWORD = st.nextToken();
                     String EMAIL_ADDRESS = st.nextToken();
                     String SURNAME = st.nextToken();
@@ -102,14 +102,14 @@ public class User_folder {
         int rowNum = 0;
         for (String[] row : user_document) {
             if (rowNum > 0) {
-                String username = row[Username];
                 String userID = row[UserId];
+                String username = row[Username];
                 String password = row[Password];
                 String firstname = row[FirstName];
                 String surname = row[Surname];
                 String phone_number = row[Phone_Number];
                 String email_address = row[Emailaddress];
-                User userObj = new User(username, userID,password,firstname,surname,phone_number,email_address);
+                User userObj = new User(userID,username,password,firstname,surname,phone_number,email_address);
                 userList.add(userObj);
             }
             rowNum++;

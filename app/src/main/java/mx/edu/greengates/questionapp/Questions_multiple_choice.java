@@ -31,6 +31,7 @@ import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.io.File;
 
 
 import mx.edu.greengates.questionapp.data.model.Question;
