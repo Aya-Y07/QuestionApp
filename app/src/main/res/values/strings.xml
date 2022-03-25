@@ -87,4 +87,5 @@
     <string name="text_time">00:00:00.000</string>
     <string name="solutions">Solutions</string>
     <string name="solutions">Solutions</string>
+    <string name="btn_weak_point">Weak points</string>
 </resources>

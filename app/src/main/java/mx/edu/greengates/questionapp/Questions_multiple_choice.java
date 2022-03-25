@@ -29,12 +29,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.io.File;
-
 
 import mx.edu.greengates.questionapp.data.model.MyFile;
 import mx.edu.greengates.questionapp.data.model.Question;
@@ -137,7 +134,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
 
 
         questionNumber = (TextView) findViewById(R.id.questionNum);
-        questionText = (TextView) findViewById(R.id.Question_text);
+        questionText = (TextView) findViewById(R.id.Weak_point_Question_text);
         rgAnswers = (RadioGroup) findViewById(R.id.radioGroup);
         radioAnswer1 = (RadioButton) findViewById(R.id.ans_a);
         radioAnswer2 = (RadioButton) findViewById(R.id.ans_b);
@@ -217,6 +214,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
     }
 
 
+
     private boolean checkAnswer(){
         String correct = TempQuestion.getAnswer().trim();
         Log.println(Log.DEBUG,"answer", "Correct answer =[" + correct + "]");
@@ -232,6 +230,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         return (correct.compareTo(userAnswer) == 0);
 
     }
+
 
     private Questions getQuestionsFromCSV(){
         int ID = 0;
@@ -283,6 +282,8 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
 
         return questionsFromFile;
     }
+
+
 
     public void onClick(View v)
     {

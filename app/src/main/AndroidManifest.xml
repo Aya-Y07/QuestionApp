@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuestionApp">
         <activity
+            android:name=".Questions_weak_points"
+            android:exported="false" />
+        <activity
+            android:name=".Weak_points"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity

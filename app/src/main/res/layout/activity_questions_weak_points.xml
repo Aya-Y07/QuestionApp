@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.edu.greengates.questionapp.Questions_multiple_choice">
-
+    tools:context=".Questions_weak_points">
 
     <ImageButton
         android:id="@+id/btn_go_back"

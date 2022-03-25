@@ -14,6 +14,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     private Button graphs;
     private Button accuracy_rate;
     private Button profile;
+    private Button weak_point;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         profile = (Button) findViewById(R.id.btn_profile);
         profile.setOnClickListener((View.OnClickListener)this);
 
+        weak_point = (Button) findViewById(R.id.btn_weak_point);
+        weak_point.setOnClickListener((View.OnClickListener)this);
+
     }
     public void onClick(View v){
 
@@ -51,6 +55,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             Intent myIntent = new Intent(Home.this, Record_data.class);
         }if (v== profile);{
             Intent myIntent = new Intent(Home.this, Profile.class);
+        }if (v== weak_point);{
+            Intent myIntent = new Intent(Home.this, Weak_points.class);
         }
     }
 }
