@@ -25,10 +25,10 @@ vec_1,If 4i^+7j^+8k^ 2i^+3j^+4k^ and 2i^+5j^+7k^ are the position vectors of the
 vec_2,If a satisfies a × (i + 2j + k) = i - k. Then a is equal to ,λi + (2λ + 1)j + λk - λ∈R,λi + (2λ -1)j + λk - λ∈R,λi + (1 - 2λ)j + λk - λ∈R,λi + (2λ + 1)j + λk - λ∈R,λi - (1 + 2λ)j + λk - λ∈R,img: vec_2_solution,M
 vec_3,If a b and c are three unit vectors inclined to each other at an angle θ. then the maximum value of θ is,2π/3,π/3,π/2,2π/3,5π/6,img: vec_3_solution,M
 vec_4,Vectors 3a - 5b and 2a + b are mutually perpendicular. If a + 4b and b - a are also mutually perpendicualr then the cosine of the angle between a and b is,19/(5√43),19/(5√43),19/(3√43),19/(2√45),19/(6√43),img: vec_4_solution,M
-alg_1,img: vec_1,A,A,B,C,D,,M
-alg_2,img: vec_2,A,A,B,C,D,,M
-alg_3,img: vec_3,A,A,B,C,D,,M
-alg_4,img: vec_4,A,A,B,C,D,,M
+alg_1,Solve for x. (|x+3|+x)/(x+2)>1,A,x∈(−5,−2)∪(−1,∞),x∈(5,2)∪(−1,∞), x∈(5,2),x∈(−1,∞),img: alg_1_solution,M
+alg_2,The solution set of the inequality 37−(3x+5)≥9x−8(x−3) is,(−∞,2],(−∞,2),(−∞,−2),(−∞,2],(−∞,−2],img: alg_2_solution,M
+alg_3,Solution of 2x−1=|x+7| is,8,-2,8,-2 and 8,None of these,img: alg_3_solution,M
+alg_4,Ravi obtained 70 and 75 marks in first two unit tests. Then the minimum marks he should get in the third test to have an average of at least 60 marks, are,35,45,35,25,None of these,img: alg_4_solution,M
 comp_1,img: comp_1,No value of x,x = nπ,x = (n + 1/2)π,x = 0,No value of x,img: comp_1_solution,M
 comp_2,img: comp_2,4,1,2,3,4,img: comp_2_solution,M
 comp_3,img: comp_3,1,1,-1,0,None of these,img: comp_3_solution,M

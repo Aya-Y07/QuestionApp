@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -35,6 +36,7 @@ import java.util.TimerTask;
 import java.io.File;
 
 
+import mx.edu.greengates.questionapp.data.model.MyFile;
 import mx.edu.greengates.questionapp.data.model.Question;
 import mx.edu.greengates.questionapp.data.model.Questions;
 import mx.edu.greengates.questionapp.data.model.Question_folder;
@@ -63,8 +65,15 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
     private Timer timer;
     LocalTime time;
 
+    import mx.edu.greengates.questionapp.data.model.MyFile;
+
     Questions questions;
-    Map
+    Map<String, int[]> questionMap;
+    String[] questionWithImages;
+    int currQuestionNum;
+    int currTopicNum;
+    Question currQuestion;
+    String cuttTopic;
 
     ImageView imageView;
 
@@ -75,6 +84,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
             R.drawable.topic_1_3,
             R.drawable.topic_1_4,
     };
+
     int [] Topic_2_Images = {
             R.drawable.topic_2_1,
             R.drawable.topic_2_2,
@@ -104,12 +114,30 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_multiple_choice);
 
+        final Myfile myFile = (MyFile) getApplicationContext();
+        fillMyFile(myFile);
+
+        questions = Question_folder.getQuestionsFromCSV(this);
+
+        List<String> topics = questions.getAllTopics();
+        List<String> topicWithImage = pickTopics(questions, topics);
+
         // Receiving information from previous activity
         Intent intent = getIntent();
         String topic = intent.getStringExtra("Quiz");
 
+        questionWithimages = new String[topicWithImage()];
+        topicWithImage.toArray(questionWithImages);
+
+        questionMap = createQuestionMap(questionWithImages, questions);
+
+        currTopicNum = 0;
+        currQuestionNum = 0;
+        score = 0;
+
 
         questionNumber = (TextView) findViewById(R.id.questionNum);
+        questionText = (TextView) findViewById(R.id.Question_text);
         rgAnswers = (RadioGroup) findViewById(R.id.radioGroup);
         radioAnswer1 = (RadioButton) findViewById(R.id.ans_a);
         radioAnswer2 = (RadioButton) findViewById(R.id.ans_b);
@@ -138,12 +166,14 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         final MyFile myFile = (MyFile) getApp;getApplicationContext();
         fileMyFile(myFile);
 
+        showQuestionOnDisplay();
+
 
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void onClickStart(View view) {
+    public void onClickStartTimer(View view) {
         if (timer != null) {
             return;
         }
@@ -165,7 +195,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
                 });
             }
         }, 0, period);
-    }//timer
+    }
 
     public void showQuestionOnDisplay() {
         questionNumber.setText(getString(R.string.question_count,quizNum));
@@ -202,6 +232,7 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         return (correct.compareTo(userAnswer) == 0);
 
     }
+
     private Questions getQuestionsFromCSV(){
         int ID = 0;
         int A0 = 1;
