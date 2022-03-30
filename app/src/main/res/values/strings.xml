@@ -86,6 +86,10 @@
     <string name="btn_return_to_home">Return to Home</string>
     <string name="text_time">00:00:00.000</string>
     <string name="solutions">Solutions</string>
-    <string name="solutions">Solutions</string>
     <string name="btn_weak_point">Weak points</string>
+    <string name="btn_log_in">Log in</string>
+    <string name="btn_register">Register</string>
+    <string name="total_score">Total Score</string>
+    <string name="txt_questions_mistaken">TextView</string>
+    <string name="weak_point_image">TODO</string>
 </resources>

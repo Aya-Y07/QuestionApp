@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -22,7 +24,6 @@ public class Question_folder {
     public final int A2 = 5;
     public final int A3 = 6;
     public final int SOLUTION = 7;
-    public final int SUBJECT = 8;
     Context context;
 
     public String filename;
@@ -59,45 +60,7 @@ public class Question_folder {
             System.out.println();
         }
     }
-    public static Questions getQuestionsFromCSV(Context context){
 
-        ArrayList<Question> questions = new ArrayList<Question>();
-        Questions questionsFromFile = new Questions(questions);
-
-        AssetManager assetManager = context.getAssets();
-        InputStream is = null;
-        try{
-            String QUESTION_FILE ="Questions.csv";
-            is = assetManager.open(QUESTION_FILE);
-            BufferedReader reader = null;
-            reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-
-            String line ="";
-
-            StringTokenizer st = null;
-            int numLine = 0;
-            while((line = reader.readLine())!=null){
-                if(numLine > 0){
-                    st = new StringTokenizer(line,",");
-
-                    String ID = st.nextToken();
-                    String QUESTION = st.nextToken();
-                    String ANSWER = st.nextToken();
-                    String A0 = st.nextToken();
-                    String A1 = st.nextToken();
-                    String A2 = st.nextToken();
-                    String A3 = st.nextToken();
-                    String SOLUTION = st.nextToken();
-                    String SUBJECT = st.nextToken();
-
-
-                }
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        return questionsFromFile;
-    }
 
     public List<Question> createQuestions() {
 
@@ -113,12 +76,16 @@ public class Question_folder {
                 String a2 = row[A2];
                 String a3 = row[A3];
                 String solution = row[SOLUTION];
-                String subject = row[SUBJECT];
-                Question questionObj = new Question(id,question,answer,a0,a1,a2,a3,solution,subject);
+                Question questionObj = new Question(id,question,answer,a0,a1,a2,a3,solution);
                 questionList.add(questionObj);
             }
             rowNum++;
         }
         return questionList;
     }
+
+
+
+
+
 }

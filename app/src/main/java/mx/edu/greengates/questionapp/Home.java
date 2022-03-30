@@ -56,7 +56,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         }if (v== profile);{
             Intent myIntent = new Intent(Home.this, Profile.class);
         }if (v== weak_point);{
-            Intent myIntent = new Intent(Home.this, Weak_points.class);
+            Intent myIntent = new Intent(Home.this, Review.class);
         }
     }
 }

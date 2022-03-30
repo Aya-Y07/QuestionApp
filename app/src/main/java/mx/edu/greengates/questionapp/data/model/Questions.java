@@ -7,16 +7,26 @@ public class Questions {
 
     private final List<Question> questions;
 
-    public Questions(List<Question> questions){
+    public Questions(List<Question> questions) {
         this.questions = questions;
     }
 
-    public List<Question> getQuestions(){
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public Question getQuestion(int index){
+    public Question getQuestion(int index) {
         return questions.get(index);
+    }
+    public Question getQuestion(String identifier) {
+        Question selectedQuestion = null;
+        for(Question question: questions){
+            if(question.getQuestion().compareTo(identifier) == 0){
+                selectedQuestion = question;
+                break;
+            }
+        }
+        return selectedQuestion;
     }
 
     public void addQuestion(Question question){

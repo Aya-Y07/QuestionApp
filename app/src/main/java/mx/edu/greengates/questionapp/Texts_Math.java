@@ -19,11 +19,16 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
     private Button ans_vec;
     private Button ans_comp;
 
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_math);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
 
         trig = (Button) findViewById(R.id.question_trignometry);
         trig.setOnClickListener((View.OnClickListener)this);
@@ -52,16 +57,22 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
     }
     public void onClick (View v){
         String quiz = "";
+
         if(v == trig){
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "trig";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
+
         }
         if(v == alg){
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "alg";
             myIntent.putExtra("Quiz", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == vec){
@@ -69,11 +80,15 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
             quiz = "vec";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
         if(v == comp){
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "comp";
             myIntent.putExtra("Quiz", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
 
@@ -83,11 +98,15 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
             quiz = "solution_trig";
             myIntent.putExtra("Solution", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
         if(v == ans_dif){
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "dif";
             myIntent.putExtra("Solution", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == ans_vec){
@@ -95,11 +114,15 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
             quiz = "vec";
             myIntent.putExtra("Solution", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
         if(v == ans_comp){
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "comp";
             myIntent.putExtra("Solution", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
 

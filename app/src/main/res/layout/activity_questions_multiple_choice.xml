@@ -7,43 +7,6 @@
     tools:context="mx.edu.greengates.questionapp.Questions_multiple_choice">
 
 
-    <ImageButton
-        android:id="@+id/btn_go_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="327dp"
-        android:layout_marginBottom="600dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/abc_vector_test"
-        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck,DuplicateSpeakableTextCheck,SpeakableTextPresentCheck"
-        android:contentDescription="@string/btn_go_back" />
-
-    <ImageButton
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="308dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="600dp"
-        android:rotationY="180"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test"
-        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck,SpeakableTextPresentCheck"
-        android:contentDescription="@string/btn_next" />
-
-
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="413dp"
@@ -141,7 +104,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/weak_point_image"
+        android:id="@+id/image"
         android:layout_width="273dp"
         android:layout_height="161dp"
         android:layout_marginStart="68dp"
@@ -157,7 +120,7 @@
         tools:visibility="invisible" />
 
     <TextView
-        android:id="@+id/Weak_point_Question_text"
+        android:id="@+id/Question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question_text"

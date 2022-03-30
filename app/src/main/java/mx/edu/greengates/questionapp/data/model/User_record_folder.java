@@ -14,9 +14,8 @@ import java.util.StringTokenizer;
 
 public class User_record_folder {
 
-    public final int UserID = 0;
+    public final int UserName = 0;
     public final int ID = 1;
-    public final int Question_ID_Mistaken = 2;
     public final int Score = 3;
     public final int Accuracy_rate = 4;
     public final int Time_taken = 5;
@@ -26,7 +25,7 @@ public class User_record_folder {
 
     public String filename;
     private ArrayList<String[]> document_mistake;
-    public User_record_folder(Context context, String filename){
+    public User_record_folder(){
         this.context = context;
         this.filename = filename;
 
@@ -79,9 +78,8 @@ public class User_record_folder {
                 if(numLine > 0){
                     st = new StringTokenizer(line,",");
 
-                    String UserID = st.nextToken();
+                    String USERNAME = st.nextToken();
                     String ID = st.nextToken();
-                    String QUESTION_ID_MISTAKEN = st.nextToken();
                     String SCORE = st.nextToken();
                     String ACCURACY_RATE = st.nextToken();
                     String TIME_TAKEN = st.nextToken();
@@ -102,18 +100,18 @@ public class User_record_folder {
         for (String[] row : document_mistake) {
             if (rowNum > 0) {
                 String id = row[ID];
-                String user_id = row[UserID];
-                String question_id_mistaken = row[Question_ID_Mistaken];
+                String username = row[UserName];
                 String score = row[Score];
                 String accuracy_rate = row[Accuracy_rate];
                 String time_taken = row[Time_taken];
                 String date = row[Date];
 
-                User_record recordObj = new User_record(id,user_id,question_id_mistaken,score,accuracy_rate,time_taken,date);
+                User_record recordObj = new User_record(id,username,score,accuracy_rate,time_taken,date);
                 recordList.add(recordObj);
             }
             rowNum++;
         }
         return recordList;
     }
+
 }

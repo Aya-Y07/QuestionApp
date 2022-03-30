@@ -3,6 +3,7 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/score"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Result">
@@ -12,39 +13,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
-        android:layout_marginTop="416dp"
         android:layout_marginEnd="159dp"
-        android:layout_marginBottom="267dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/btn_return_to_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tablelayout"
+        android:layout_width="410dp"
+        android:layout_height="455dp"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    </TableLayout>
 
     <TextView
         android:id="@+id/accuracy_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="308dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginBottom="404dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginBottom="93dp"
+        android:text="@string/text_accuracy_rate"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_go_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tablelayout" />
 
     <TextView
-        android:id="@+id/total_score"
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginBottom="480dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="93dp"
+        android:text="@string/total_score"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_go_home"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/accuracy_rate"
+        app:layout_constraintTop_toBottomOf="@+id/tablelayout" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

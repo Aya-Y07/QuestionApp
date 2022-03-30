@@ -22,13 +22,20 @@ public class User {
         this.phone_Number = phone_Number;
     }
 
-    public String getUsernamet(){return username;}
+    public String getUsername(){return username;}
+    public void setUsername(String username){this.username = username;}
     public String getUserId(){ return userId;}
+    public void setUserId(String userId){this.userId = userId;}
     public String getEmailaddress(){return emailaddress;}
+    public void setEmailaddress(String emailaddress){this.emailaddress = emailaddress;}
     public String getFirstName(){return firstName;}
+    public void setFirstName(String firstName){this.firstName = firstName;}
     public String getSurname(){return surname;}
+    public void setSurname(String surname){this.surname = surname;}
     public String getPhone_Number(){return phone_Number;}
+    public void setPhone_Number(String phone_Number){this.phone_Number = phone_Number;}
     public String getPassword(){return password;}
+    public void setPassword(String password){this.password = password;}
 
 
     @Override

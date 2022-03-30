@@ -26,6 +26,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText username;
     EditText password;
     private Button login;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         login = (Button) findViewById(R.id.btn_login);
         login.setOnClickListener(this);
+
+        register = (Button) findViewById(R.id.btn_register);
+        register.setOnClickListener(this);
 
     }
 
@@ -53,20 +57,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return token;//return
+        return token;
 
     }
 
     private boolean checkCredentials(String user, String pass){
         boolean validCredential = false;
-        String encryptedPass = password(pass);//暗号化したパスワード
+        String encryptedPass = password(pass);
         ArrayList<loginCred> objList = new ArrayList<loginCred>();
-        AssetManager assetManager = getAssets();//assetに含まれているフォルダーに保存する
-        InputStream is = null;//連続するデータを順次に必要な分だけ読む虚無もの
+        AssetManager assetManager = getAssets();
+        InputStream is = null;
         try{
             is = assetManager.open("users.csv");
         }catch(IOException e){
-            e.printStackTrace();//スタックトレースとはコンピュータプログラムにエラーが発生した際に直前に実行していた関数やメゾットなどの経歴を表示すること
+            e.printStackTrace();
         }
         BufferedReader reader = null;
         reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -86,7 +90,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         }catch (IOException e) {
             e.printStackTrace();
-        }//コンパイルエラーとはコードに何かしらの不具合やバグが発生すること
+        }
         return validCredential;
 
     }
@@ -96,13 +100,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String user = String.valueOf(username.getText());
         String pass = String.valueOf(password.getText());
 
-        if(v == login && checkCredentials(user,pass)){//指定された名前とパスワードをこのテキストで検証するために、着信要求ごとに呼び出される
+        if(v == login && checkCredentials(user,pass)){
             Intent myIntent = new Intent(Login.this, Home.class);
-            myIntent.putExtra("progress", 50);//optional parameters
+            myIntent.putExtra("progress", 50);
             Login.this.startActivity(myIntent);
 
-        }
-        return;
+        }if (v == register){
+            Intent myIntent = new Intent(Login.this, Profile.class);
+            Login.this.startActivity(myIntent);
+    }return;
+
     }
 
 

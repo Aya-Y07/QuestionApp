@@ -1,140 +1,87 @@
 package mx.edu.greengates.questionapp;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import mx.edu.greengates.questionapp.data.model.MyFile;
-import mx.edu.greengates.questionapp.data.model.Question;
-import mx.edu.greengates.questionapp.data.model.Questions;
-import mx.edu.greengates.questionapp.data.model.Question_folder;
+import mx.edu.greengates.questionapp.data.model.WriteIntoMistaken_QuestionCSV;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
-public class Questions_multiple_choice extends AppCompatActivity implements View.OnClickListener{
+public class Questions_multiple_choice extends AppCompatActivity {
 
     private TextView questionNumber;
     private TextView questionText;
+    private TextView Timer;
     private RadioGroup rgAnswers;
     private RadioButton radioAnswer1;
     private RadioButton radioAnswer2;
     private RadioButton radioAnswer3;
     private RadioButton radioAnswer4;
-    private Button btnEndQuiz;
-    private Button btnTimer;
-    private ImageButton btnNext;
-    private ImageButton btnBack;
     private int score;
     private int quizNum;
-    private final int Quiz_length = 4;
-    private Questions quiz;
-    private Question TempQuestion;
-    private int rightAnswerCount;
+    private int Score;
     private String rightAnswer;
     private Timer timer;
-    LocalTime time;
-
-    import mx.edu.greengates.questionapp.data.model.MyFile;
-
-    Questions questions;
-    Map<String, int[]> questionMap;
-    String[] questionWithImages;
-    int currQuestionNum;
-    int currTopicNum;
-    Question currQuestion;
-    String cuttTopic;
+    private long period;
+    private int count;
+    private SimpleDateFormat Time;
+    private final int QUIZ_COUNT = 4;
+    private final SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", Locale.US);
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    public ArrayList<String> finishedQuestions;
+    public ArrayList<String> finishedAns;
+    public ArrayList<String> result;
+    private ArrayList<StringTokenizer> questions;
+    private List<List<String>> quiz = null;
+    private String currQuestion;
+    private String currSubject;
+    private String username;
 
     ImageView imageView;
-
     int imageNum;
-    int [] Topic_1_Images = {
-            R.drawable.topic_1_1,
-            R.drawable.topic_1_2,
-            R.drawable.topic_1_3,
-            R.drawable.topic_1_4,
-    };
-
-    int [] Topic_2_Images = {
-            R.drawable.topic_2_1,
-            R.drawable.topic_2_2,
-            R.drawable.topic_2_3,
-            R.drawable.topic_2_4,
-    };
-
-    int [] Topic_3_Images = {
-            R.drawable.topic_3_1,
-            R.drawable.topic_3_2,
-            R.drawable.topic_3_3,
-            R.drawable.topic_3_4,
-    };
-
-    int [] Topic_4_Images = {
-            R.drawable.topic_4_1,
-            R.drawable.topic_4_2,
-            R.drawable.topic_4_3,
-            R.drawable.topic_4_4,
-    };
 
 
-    ArrayList<Question>TempQuestionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_multiple_choice);
 
-        final Myfile myFile = (MyFile) getApplicationContext();
-        fillMyFile(myFile);
-
-        questions = Question_folder.getQuestionsFromCSV(this);
-
-        List<String> topics = questions.getAllTopics();
-        List<String> topicWithImage = pickTopics(questions, topics);
-
-        // Receiving information from previous activity
         Intent intent = getIntent();
-        String topic = intent.getStringExtra("Quiz");
-
-        questionWithimages = new String[topicWithImage()];
-        topicWithImage.toArray(questionWithImages);
-
-        questionMap = createQuestionMap(questionWithImages, questions);
-
-        currTopicNum = 0;
-        currQuestionNum = 0;
-        score = 0;
+        username = intent.getStringExtra("username");
 
 
         questionNumber = (TextView) findViewById(R.id.questionNum);
-        questionText = (TextView) findViewById(R.id.Weak_point_Question_text);
+        questionText = (TextView) findViewById(R.id.Question_text);
         rgAnswers = (RadioGroup) findViewById(R.id.radioGroup);
         radioAnswer1 = (RadioButton) findViewById(R.id.ans_a);
         radioAnswer2 = (RadioButton) findViewById(R.id.ans_b);
@@ -143,178 +90,262 @@ public class Questions_multiple_choice extends AppCompatActivity implements View
         imageView = (ImageView) findViewById(R.id.imageView);
         imageNum = 1;
 
-        quiz = Question_folder.getQuestionsFromCSV(this);
         quizNum = 1;
         score = 0;
 
-
-        btnTimer = (Button) findViewById(R.id.btn_start);
-        btnTimer.setOnClickListener(this);
-        btnNext = (ImageButton) findViewById(R.id.btn_next);
-        btnNext.setOnClickListener(this);
-        btnBack = (ImageButton) findViewById(R.id.btn_go_back);
-        btnBack.setOnClickListener(this);
-        btnEndQuiz = (Button) findViewById(R.id.btn_end_quiz);
-        btnEndQuiz.setOnClickListener(this);
-        btnEndQuiz.setEnabled(false);
-
-        ArrayList<String> currQuestion = new ArrayList<>();
-
-        final MyFile myFile = (MyFile) getApp;getApplicationContext();
-        fileMyFile(myFile);
-
-        showQuestionOnDisplay();
-
-
     }
 
+    public void getQuestionsFromCSV(Context context){
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void onClickStartTimer(View view) {
-        if (timer != null) {
-            return;
-        }
-        TextView textViewJudge = (TextView)findViewById(R.id.txtTime);
-        final Handler handler = new Handler();
-        time = LocalTime.of(0, 0);
-        int period = 100;
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                time = time.plusNanos((long) (period * Math.pow(10, 6)));
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        String fmt = time.format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
-                        textViewJudge.setText(fmt);
-                    }
-                });
+        AssetManager assetManager = context.getAssets();
+        InputStream is = null;
+        try{
+            String QUESTION_FILE ="Questions.csv";
+            is = assetManager.open(QUESTION_FILE);
+            BufferedReader reader = null;
+            reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+
+            String line ="";
+
+            StringTokenizer st = null;
+            int numLine = 0;
+            while((line = reader.readLine())!=null){
+                if(numLine > 0){
+                    st = new StringTokenizer(line,",");
+
+
+                    String ID = st.nextToken();
+                    String QUESTION = st.nextToken();
+                    String ANSWER = st.nextToken();
+                    String A0 = st.nextToken();
+                    String A1 = st.nextToken();
+                    String A2 = st.nextToken();
+                    String A3 = st.nextToken();
+                    String SOLUTION = st.nextToken();
+                    String SUBJECT = st.nextToken();
+
+
+                    questions.add(st);
+
+                    quizfromCSV();
+                }
             }
-        }, 0, period);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
-    public void showQuestionOnDisplay() {
-        questionNumber.setText(getString(R.string.question_count,quizNum));
-        rightAnswer = TempQuestion.getAnswer();
+    public void quizfromCSV() {
 
-        String[] options = TempQuestion.getOptions();
-        Collections.shuffle(Arrays.asList(options));
-        radioAnswer1.setText(options[0]);
+
+        Intent intent = getIntent();
+        String topic = intent.getStringExtra("Quiz");
+
+        int coulmnNum = questions.size();
+
+        while (coulmnNum > 0) {
+
+            String id = questions.get(coulmnNum).nextToken(String.valueOf(0));
+            if (id.contains(topic)) {
+
+                quiz = Collections.singletonList(
+                        Arrays.asList(
+                                questions.get(coulmnNum).nextToken(String.valueOf(1)),
+                                questions.get(coulmnNum).nextToken(String.valueOf(2)),
+                                questions.get(coulmnNum).nextToken(String.valueOf(3)),
+                                questions.get(coulmnNum).nextToken(String.valueOf(4)),
+                                questions.get(coulmnNum).nextToken(String.valueOf(5)),
+                                questions.get(coulmnNum).nextToken(String.valueOf(6)))
+                );
+                coulmnNum -= 1;
+
+            } else {
+                coulmnNum -= 1;
+            }
+        }
+        showQuestionsOnDisplay();
+    }
+
+
+    private void showQuestionsOnDisplay() {
+
+        questionNumber.setText(getString(R.string.question_count,quizNum));
+
+        Random r = new Random();
+        int randomNum = r.nextInt(quiz.size());
+        List<String> Questions = quiz.get(randomNum);
+
+        finishedQuestions.add(Questions.get(0));
+        questionText.setText(Questions.get(0));
+
+        questionText.setVisibility(View.GONE);
+        imageView.setVisibility(View.VISIBLE);
+
+        rightAnswer = Questions.get(1);
+        finishedAns.add(Questions.get(1));
+
+        currQuestion = Questions.get(0);
+        currSubject = Questions.get(2);
+        int i = 2;
+
+        ArrayList<List<String>> choice = new ArrayList<>();
+
+        while (i < 6){
+
+            choice.add(quiz.get(i));
+            i += 1;
+        }
+
+        Collections.shuffle(choice);
+
+        radioAnswer1.setText((CharSequence) choice.get(0));
         radioAnswer1.setChecked(false);
-        radioAnswer2.setText(options[1]);
+        radioAnswer1.setText((CharSequence) choice.get(1));
         radioAnswer2.setChecked(false);
-        radioAnswer3.setText(options[2]);
+        radioAnswer1.setText((CharSequence) choice.get(2));
         radioAnswer3.setChecked(false);
-        radioAnswer4.setText(options[3]);
+        radioAnswer1.setText((CharSequence) choice.get(3));
         radioAnswer4.setChecked(false);
 
 
 
+        quiz.remove(randomNum);
     }
 
 
+    protected void measureTime(Bundle savedInstanceState) {
 
-    private boolean checkAnswer(){
-        String correct = TempQuestion.getAnswer().trim();
-        Log.println(Log.DEBUG,"answer", "Correct answer =[" + correct + "]");
-        // get selected radio button from radioGroup
-        int selectedId = rgAnswers.getCheckedRadioButtonId();
-        // find the radiobutton by returned id
-        RadioButton radioButton = (RadioButton) findViewById(selectedId);
-        if (radioButton.equals(rightAnswer)){
+        long delay = 0;
+        period = 100;
 
+        Timer = findViewById(R.id.txtTime);
+        Timer.setText(dataFormat.format(0));
+
+        if (null != timer) {
+            timer.cancel();
+            timer = null;
         }
-        String userAnswer = radioButton.getText().toString().trim();
-        Log.println(Log.DEBUG,"answer", "User answer =[" + userAnswer + "]");
-        return (correct.compareTo(userAnswer) == 0);
 
+        timer = new Timer();
+
+        count = 0;
+        Timer.setText(dataFormat.format(0));
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        count++;
+                        Timer.setText(dataFormat.format(count * period));
+                    }
+                });
+            }
+        }, delay, period);
+        checkAnswer();
     }
 
+    private void checkAnswer(){
 
-    private Questions getQuestionsFromCSV(){
-        int ID = 0;
-        int A0 = 1;
-        int A1 = 2;
-        int A2 = 3;
-        int A3 = 4;
-        int SOLUTION = 5;
-        int SUBJECT = 6;
 
-        ArrayList<Question> questions = new ArrayList<>();
-        Questions questionsFromFile = new Questions(questions);
+        Log.println(Log.DEBUG,"answer", "Correct answer =[" + rightAnswer + "]");
+        int selected = rgAnswers.getCheckedRadioButtonId();
+        RadioButton radioButton = (RadioButton) findViewById(selected);
+        String userAns = radioButton.getText().toString().trim();
 
-        AssetManager assetManager = getAssets();
-        InputStream is = null;
+        String notification;
 
-        try {
-            String QUIZ_FILE = "Questions.csv";
-            is = assetManager.open(QUIZ_FILE);
-            BufferedReader reader = null;
-            reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+        if (userAns.equals(rightAnswer)){
+            score += 1;
+            notification = "correct";
+            result.add("○");
+        }else{
+            notification = "incorrect";
+            result.add("×");
 
-            String line = "";
-            StringTokenizer st = null;
-            int numLine = 0;
-            while ((line = reader.readLine()) != null) {
-                if(numLine >0 ){
-                    st = new StringTokenizer(line, ",");
+            String[] questionData = {username,currQuestion,currSubject};
 
-                    String id = st.nextToken();
-                    String question= st.nextToken();
-                    String answer= st.nextToken();
-                    String a0 = st.nextToken();
-                    String a1 = st.nextToken();
-                    String a2 = st.nextToken();
-                    String a3 = st.nextToken();
-                    String solution = st.nextToken();
-                    String subject = st.nextToken();
+            WriteIntoMistaken_QuestionCSV writer = new WriteIntoMistaken_QuestionCSV(this, "mistaken_question.csv");
+            try {
+                writer.writeQuestionDataCSV("mistaken_question.csv", questionData);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-                    Question quizObj = new Question( id, question, answer, a0,a1, a2, a3, solution,subject);
 
-                    questionsFromFile.addQuestion(quizObj);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(notification);
+        builder.setMessage("Answer : " + rightAnswer);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (quizNum == QUIZ_COUNT) {
+
+                    Intent myIntent = new Intent(Questions_multiple_choice.this, Result.class);
+                    Questions_multiple_choice.this.startActivity(myIntent);
+
+                    Score = score;
+                    myIntent.putExtra("score", Score);
+                    startActivity(myIntent);
+
+
+
+                    if (null != timer) {
+                        timer.cancel();
+                        timer = null;
+                        Timer.setText(Questions_multiple_choice.this.dataFormat.format(0));
+                        Time = Questions_multiple_choice.this.dataFormat;
+
+                    }
+                    myIntent.putExtra("time", Time);
+                    startActivity(myIntent);
+
+                    Date now = new Date();
+                    checkAnswer();
+                    myIntent.putExtra("Date", now);
+                    startActivity(myIntent);
+
+                    myIntent.putExtra("username", username);
+                    startActivity(myIntent);
+
+                    String page_name = "Question";
+                    myIntent.putExtra("Page Name", page_name);
+                    startActivity(myIntent);
+
+
+
+                } else {
+                    quizNum++;
+                    showQuestionsOnDisplay();
                 }
-                numLine++;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
+        builder.setCancelable(false);
+        builder.show();
 
-        return questionsFromFile;
+    }
+
+    public List<String> getFinishedQuestions(){
+        List<String> finishedquestions = this.finishedQuestions;
+        return finishedQuestions;
+    }
+    public List<String> getFinishedAns(){
+        List<String> finishedans = this.finishedAns;
+        return finishedAns;
+    }
+    public List<String> getResult(){
+        List<String> result = this.result;
+        return result;
+    }
+
+    public List<StringTokenizer> getQuestionList(){
+        ArrayList<StringTokenizer> question_list = this.questions;
+        return questions;
     }
 
 
 
-    public void onClick(View v)
-    {
-        if (v == btnNext)
-        {
-            if(checkAnswer()){
-                score ++;
-                Log.println(Log.DEBUG,"score", "Score =[" + score + "]");
-            }
-            if (quizNum == Quiz_length){
-                btnEndQuiz.setEnabled(true);
-            }
-            else {
-                quizNum++;
-                showQuestionOnDisplay();
-            }
-        }
-        else if(v == btnEndQuiz)
-        {
-            Intent myIntent = new Intent(Questions_multiple_choice.this, Result.class);
-            myIntent.putExtra("score", score);
-            Questions_multiple_choice.this.startActivity(myIntent);
-            if(null != timer){
-                // Cancel
-                timer.cancel();
-                timer = null;
-            }
-
-        }
-        return;
-    }
 }
-
 

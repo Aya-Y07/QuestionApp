@@ -21,13 +21,16 @@ public class Texts_Physics extends AppCompatActivity implements View.OnClickList
     private Button ans_3;
     private Button ans_4;
 
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texts_physics);
 
-
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
 
         topic_1 = (Button) findViewById(R.id.questions_1);
         topic_1.setOnClickListener((View.OnClickListener) this);
@@ -56,11 +59,15 @@ public class Texts_Physics extends AppCompatActivity implements View.OnClickList
             quiz = "Topic_1_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
         if(v == topic_2){
             Intent myIntent = new Intent(Texts_Physics.this, Questions_multiple_choice.class);
             quiz = "Topic_2_Images";
             myIntent.putExtra("Quiz", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == topic_3){
@@ -68,19 +75,24 @@ public class Texts_Physics extends AppCompatActivity implements View.OnClickList
             quiz = "Topic_3_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
         if(v == topic_4){
             Intent myIntent = new Intent(Texts_Physics.this, Questions_multiple_choice.class);
             quiz = "Topic_4_Images";
             myIntent.putExtra("Quiz", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
-
 
         if(v == ans_1){
             Intent myIntent = new Intent(Texts_Physics.this, Solutions.class);
             quiz = "solution_topic_1";
             myIntent.putExtra("Solution", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == ans_2){
@@ -88,11 +100,15 @@ public class Texts_Physics extends AppCompatActivity implements View.OnClickList
             quiz = "solution_topic_2";
             myIntent.putExtra("Solution", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
         if(v == ans_3){
             Intent myIntent = new Intent(Texts_Physics.this, Solutions.class);
             quiz = "solution_topic_3";
             myIntent.putExtra("Solution", quiz);
+            startActivity(myIntent);
+            myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == ans_4){
@@ -100,7 +116,8 @@ public class Texts_Physics extends AppCompatActivity implements View.OnClickList
             quiz = "solution_topic_4";
             myIntent.putExtra("Solution", quiz);
             startActivity(myIntent);
+            myIntent.putExtra("username",username);
+            startActivity(myIntent);
         }
-
     }
 }
